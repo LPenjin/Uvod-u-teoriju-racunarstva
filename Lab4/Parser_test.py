@@ -1,0 +1,21 @@
+import time
+from Parser_TestingEdition import *
+start_time = time.time()
+valid = 0
+for i in range(1, 21):
+    folder = "test"
+    if i < 10:
+        folder += "0"
+    folder += str(i)
+    a = main(f"./primjeri/{folder}/test.in")
+    b = open(f"./primjeri/{folder}/test.out").read()
+    if a == b:
+        print("Test " + str(i) + ": uspješno, vrijeme je " + str(time.time()-start_time))
+        start_time = time.time()
+        valid += 1
+    else:
+        print("Test " + str(i) + ": neuspješno, vrijeme je " + str(time.time()-start_time))
+        print('Tvoje rjesenje je:\n', a)
+        print('Njihovo rjesenje je:\n', b)
+        start_time = time.time()
+print(f"{valid}/20")
